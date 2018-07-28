@@ -5,6 +5,9 @@
 //Sample input: [8,5,2,9,5,6,3]
 //Sample input: [2,3,5,5,6,8,9]
 
+// Best: Space O(1) | Time O(n)
+// Average: Space O(1) | Time O(n^2)
+// Worst: Space O(1) | Time O(n^2)
 function bubbleSort(arr) {
     let isSorted = false;
 
