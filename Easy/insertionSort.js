@@ -13,7 +13,7 @@
 function insertionSort(arr) {
     for (let i = 1; i < arr.length; i++) {
         let j = i;
-        while (j > 0 && arr[j] < arr[j - 1]) {
+        while (arr[j] < arr[j - 1]) {
             swap(j, j - 1, arr);
             j--;
         }
@@ -28,5 +28,8 @@ function swap(i, prev, arr) {
     arr[i] = temp;
 }
 
-insertionSort([12,11,13,5,6])
-insertionSort([8,5,2,9,5,6,3])
+insertionSort([13,8,12,3,7,5])
+insertionSort([7,15,21,4,6,6,2])
+insertionSort([5,4,3,2,1])
+insertionSort([-2,3,4,1,-3])
+insertionSort([2,1,3,4,5])
