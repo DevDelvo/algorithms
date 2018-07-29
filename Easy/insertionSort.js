@@ -23,9 +23,10 @@ function insertionSort(arr) {
 }
 
 function swap(i, prev, arr) {
-    const temp = arr[prev];
-    arr[prev] = arr[i];
-    arr[i] = temp;
+    // const temp = arr[prev];
+    // arr[prev] = arr[i];
+    // arr[i] = temp;
+    [arr[prev], arr[i]] = [arr[i], arr[prev]]
 }
 
 insertionSort([13,8,12,3,7,5])
