@@ -138,35 +138,35 @@ class BST {
 
     // Average: O(log(n)) time | O(1) space
     // Worst: O(n) time | O(1) space
-    remove2(value, parentNode = null) {
+    remove(value, parentNode = null) {
         let currentNode = this;
         while (currentNode !== null) {
-            if (value < currentNode.value) {
-                parentNode = currentNode;
-                currentNode = currentNode.left;
-            } else if (value > currentNode.value) {
-                parentNode = currentNode;
-                currentNode = currentNode.right;
-            } else {
-                if (currentNode.left !== null && currentNode.right !== null) {
-                    currentNode.value = currentNode.right.getMinValue2();
-                    currentNode.right.remove(currentNode.value, currentNode);
-                } else if (parentNode === null) {
+            if (value < currentNode.value) { //if its less than
+                parentNode = currentNode; 
+                currentNode = currentNode.left; //step down to the left of the tree because it's lower
+            } else if (value > currentNode.value) { //if its greater than
+                parentNode = currentNode; 
+                currentNode = currentNode.right; //step down to right of the tree because it's greater
+            } else { //for when the value has been found
+                if (currentNode.left !== null && currentNode.right !== null) { //when the left and right nodes have been set you can remove
+                    currentNode.value = currentNode.right.getMinValue2(); //use helper function to get the small value of this tree
+                    currentNode.right.remove(currentNode.value, currentNode); //remove that node
+                } else if (parentNode === null) { //for when parentNode is null and doesn't have a value passed like when remove() is called in the previous line
                     if (currentNode.left !== null) {
-                        currentNode.value = currentNode.left.value;
-                        currentNode.right = currentNode.left.right;
-                        currentNode.left = currentNode.left.left;
-                    } else if (currentNode.right !== null) {
+                        currentNode.value = currentNode.left.value; //set value to the left
+                        currentNode.right = currentNode.left.right; //set value of right equal to the right node of the left node
+                        currentNode.left = currentNode.left.left; //set value of the left equal to the left node of the left node
+                    } else if (currentNode.right !== null) { //same as with the left but with the right
                         currentNode.value = currentNode.right.value;
                         currentNode.left = currentNode.right.left;
                         currentNode.right = currentNode.right.right;
                     } else {
-                        currentNode.value = null;
+                        currentNode.value = null; //otherwise just set the value to null if the left and right nodes are null
                     }
-                } else if (parentNode.left === currentNode) {
-                    parentNode.left = currentNode.left !== null ? currentNode.left : currentNode.right;
+                } else if (parentNode.left === currentNode) { //if the left parentNode is equal to the currentNode
+                    parentNode.left = currentNode.left !== null ? currentNode.left : currentNode.right; //parentNode.left is set to currentNode.left if currentNode.left is null otherwise it's set to currentNode.right
                 } else if (parentNode.right === currentNode) {
-                    parentNode.right = currentNode.left !== null ? currentNode.left : currentNode.right;
+                    parentNode.right = currentNode.left !== null ? currentNode.left : currentNode.right;//right parent is set to the current left if the left currentNode is null otherwise it's set to the right currentNode
                 }
                 break;
             }
@@ -182,7 +182,7 @@ class BST {
         }
     }
 
-    getMinValue2() {
+    getMinValue() {
         let currentNode = this;
         while (currentNode.left !== null) {
             currentNode = currentNode.left;
