@@ -50,11 +50,14 @@ function quickSortHelper(arr, startIdx = 0, endIdx = arr.length - 1) {
     let leftIdx = startIdx + 1;
     let rightIdx = endIdx;
     while (rightIdx >= leftIdx) {
-        if (arr[leftIdx] > arr[pivotIdx] && arr[rightIdx] < arr[pivotIdx]) {
+        let left = arr[leftIdx];
+        let right = arr[rightIdx];
+        let pivot = arr[pivotIdx];
+        if (left > pivot && right < pivot) {
             swap(leftIdx, rightIdx, arr);
         }
-        if (arr[leftIdx] <= arr[pivotIdx]) leftIdx++;
-        if (arr[rightIdx] >= arr[pivotIdx]) rightIdx--;
+        if (left <= pivot) leftIdx++;
+        if (right >= pivot) rightIdx--;
     }
     swap(pivotIdx, rightIdx, arr)
     const leftSubArrIsSmaller = rightIdx - 1 - startIdx < endIdx - (rightIdx +1);
@@ -111,4 +114,5 @@ function swap(i, j, arr) {
     [arr[i], arr[j]] = [arr[j], arr[i]]
 }
 quickSort([8,5,2,9,5,6,3])
-quickSort2([8,5,2,9,5,6,3])
+// quickSort2([8,5,2,9,5,6,3])
+quickSort([7,3,1,8,4,5,2] )
