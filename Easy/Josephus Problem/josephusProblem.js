@@ -6,7 +6,6 @@ function josephus(players, steps) {
     if (players === 1) {
         return 1;
     } else {
-        console.log((josephus(players - 1, steps) + steps - 1) % players + 1);
         return (josephus(players - 1, steps) + steps - 1) % players + 1;
     }
 }
@@ -22,7 +21,7 @@ function josephus(players, steps) {
 // 2nd person was 3. (2 * 2 - 1)
 // 3rd person was 5. (3 * 2 - 1)
 
-// If n is odd and a person is in positioon x in the current round, then the person was in 2x + 1 in the pervious round.
+// If n is odd and a person is in position x in the current round, then the person was in 2x + 1 in the pervious round.
 // 2nd person was 5. (2 * 2 + 1)
 // 3rd person was 7. (3 * 2 + 1)
 
