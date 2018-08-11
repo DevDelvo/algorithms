@@ -6,7 +6,7 @@ class LinkedList {
 
     addValues(values) {
         let current = this;
-        while (current.next != null) {
+        while (current.next !== null) {
             current = current.next;
         }
         for (const value of values) {
@@ -14,6 +14,30 @@ class LinkedList {
             current = current.next;
         }
         return this;
+    }
+
+    insertNode (where, value) {
+        let whereToInsert = this.findValue(where);
+        let newNode = new LinkedList(value);
+        newNode.next = whereToInsert.next;
+        whereToInsert.next = newNode
+    }
+
+    findValue (value) {
+        let current = this;
+        while (current.value !== value && current.next !== null) {
+            current = current.next;
+        }
+        return current.value === value ? current : 'Value not found';
+    }
+
+    findPreviousValue (value) {
+        let current = this;
+        while (current.next.value !== value && current.next !== null) {
+            current = current.next;
+        }
+        console.log(current)
+        return current;
     }
 
     getNthNode(n) {
