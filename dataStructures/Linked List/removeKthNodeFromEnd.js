@@ -27,4 +27,6 @@ const removeKthNodeFromEnd = (head, k) => {
 
 const test = new LinkedList(5).addValues([12,43,20])
 // removeKthNodeFromEnd(test, 2);
+
+test.removeNode(12)
 console.log(test.getNodesInArray()) //should remove node value 12. so 5's next value points to 43 and not 12.

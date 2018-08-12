@@ -40,6 +40,13 @@ class LinkedList {
         return current;
     }
 
+    removeNode (value) {
+        let tempNode = this.findPreviousValue(value);
+        if (tempNode.next !== null) {
+            tempNode.next = tempNode.next.next;
+        }
+    }
+
     getNthNode(n) {
         let counter = 1;
         let current = this;
