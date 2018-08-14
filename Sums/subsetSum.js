@@ -24,8 +24,9 @@
 function subsetSum(target, nums) {
     let sums = [0];
     for (let i = 0; i < nums.length; i++) {
-        // let sumsCopy = [...sums];
-        let sumsCopy = Array.prototype.slice.call(sums)
+        let sumsCopy = [...sums];
+        // let sumsCopy = Array.prototype.slice.call(sums)
+        // let sumsCopy = Object.assign([], sums)
         for (let j = 0; j < sumsCopy.length; j++) {
             let newSum = sumsCopy[j] + nums[i];
             if (newSum === target) return true;
