@@ -58,8 +58,13 @@ const dictionary = [
     return hashMap[word];
   }
   
-  definitionOf('be', dictionary); // should return 'Exist'
-  definitionOf('that', dictionary); // should return 'Used to identify a specific person or thing observed or heard by the speaker'
-  definitionOf('to', dictionary); // should return 'Expressing motion in the direction of (a particular location)'
-  definitionOf('wizbing', dictionary); // should return undefined
+  const test1 = definitionOf('be', dictionary); // should return 'Exist'
+  const test2 = definitionOf('that', dictionary); // should return 'Used to identify a specific person or thing observed or heard by the speaker'
+  const test3 = definitionOf('to', dictionary); // should return 'Expressing motion in the direction of (a particular location)'
+  const test4 = definitionOf('wizbing', dictionary); // should return undefined
   // findOrCreateHashMap(dictionary)
+
+  console.log('test1', test1);
+  console.log('test2', test2);
+  console.log('test3', test3);
+  console.log('test4', test4);
