@@ -1,14 +1,32 @@
 // Given m children and n steps and a game where you constantly eliminate the nth child, 
 // write a function that return the child who wins
 
+// const josephus = (players, steps) => {
+//     const arr = new Array(players).fill(1).map((x, i) => i + 1);
+//     let i = 0;
+//     while (arr.length > 1) {
+//       i = (i + steps) % arr.length;
+//     //   console.log(i);
+//       arr.splice(i - 1, 1);
+//     }
+//     return arr[0];
+//   };
+
 // O(n) Time | O(n) space
 function josephus(players, steps) {
     if (players === 1) {
         return 1;
     } else {
+        console.log('players', players)
         return (josephus(players - 1, steps) + steps - 1) % players + 1;
     }
 }
+// call stack players = 6 steps = 2
+
+console.log((1 + 2 - 1) % 2 + 1); // players = 2 returns 1
+console.log((1 + 2 - 1) % 3 + 1); // players = 3 returns 3 
+console.log((3 + 2 - 1) % 4 + 1); // players = 4 returns 1 
+console.log((1 + 2 - 1) % 5 + 1); // players = 5 returns 3
 
 //special case for steps = 2
 // In the first round, all even positioned players are removed.
@@ -21,7 +39,7 @@ function josephus(players, steps) {
 // 2nd person was 3. (2 * 2 - 1)
 // 3rd person was 5. (3 * 2 - 1)
 
-// If n is odd and a person is in position x in the current round, then the person was in 2x + 1 in the pervious round.
+// If n is odd and a person is in position x in the current round, then the person was in 2x + 1 in the previous round.
 // 2nd person was 5. (2 * 2 + 1)
 // 3rd person was 7. (3 * 2 + 1)
 
@@ -42,9 +60,9 @@ function josephus2(players) {
     return (2 * players) - p + 1;
 }
 
-josephus(5, 2); // 1
-josephus(14,2); // 13
-josephus2(14) // 13
-josephus2(16) // 1
+console.log(josephus(5, 2)); // 3
+// josephus(14,2); // 13
+// josephus2(14) // 13
+// josephus2(16) // 1
 
 //Source: geeksforgeeks.org
