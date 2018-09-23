@@ -53,5 +53,5 @@ class SuffixTrie {
     }
 }
 
-const trie = new SuffixTrie("babc");
+const trie1 = new SuffixTrie("babc");
 console.log(trie);
