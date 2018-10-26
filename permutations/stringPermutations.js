@@ -77,7 +77,7 @@ function optimizedStringPermutations(str) {
 }
 function sortedStringPerm(str) {
     const sortedStr = str.split('').sort().join('');
-    return stringPermutations(sortedStr); //find the ordered permutations of that sorted string
+    return optimizedStringPermutations(sortedStr); //find the ordered permutations of that sorted string
 }
 
 console.log(sortedStringPerm('cat')) //['act', 'atc', 'cat', 'cta', 'tac', 'tca']

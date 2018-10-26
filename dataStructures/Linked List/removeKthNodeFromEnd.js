@@ -16,8 +16,8 @@ const removeKthNodeFromEnd = (head, k) => {
         return;
     }
     while (secondPointer.next !== null) {
-        secondPointer.value = secondPointer.next.value;
-        secondPointer.next = secondPointer.next.next;
+        firstPoint = firstPoint.next;
+        secondPointer = secondPointer.next;
         return;
     }
     firstPoint.next = firstPoint.next.next;

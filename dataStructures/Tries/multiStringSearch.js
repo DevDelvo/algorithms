@@ -7,7 +7,7 @@
 // Sample output: [True, False, True, True, False, True, False]
 
 // Solution 1
-// O(bns) time | O(n) space
+// O(bns) time | O(n) space where b is the length of the big string and ns is the number of strings
 function multiStringSearchIterative (bigString, smallStrings) {
     return smallStrings.map(smallString => isInBigStringIterative(bigString, smallString));
 }
@@ -80,6 +80,7 @@ class ModifiedSuffixTrie {
 
 // Solution 3
 // O(ns + bs) time | O(ns) space
+// Builds a trie based on the small strings
 function multiStringSearch(bigString, smallStrings) {
     const trie = new Trie();
     for (const string of smallStrings) {

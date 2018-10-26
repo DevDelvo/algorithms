@@ -16,7 +16,7 @@ function reverseLinkedList(headOfLinkedList) {
     let prevNode = null;
     let nextNode = null;
 
-    while (current) { //until we reach the end of the list
+    while (currentNode) { //until we reach the end of the list
         nextNode = currentNode.next; //save a copy of the pointer to the next value before you reassign next
         
         currentNode.next = prevNode; //reverse the 'next' pointer
