@@ -26,7 +26,7 @@ function shuffle(arr) {
         // (could also be the item currently in that spot)
         // must be an item after the current item because all the previous items have already been placed
         const randomIdx = getRandom(idxWeAreChoosing, arr.length - 1);
-        
+
         // Place our random choice in the spot for swapping
         if (idxWeAreChoosing !== randomIdx) {
             swap(arr, randomIdx, idxWeAreChoosing);
