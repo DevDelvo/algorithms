@@ -10,7 +10,7 @@ const removeKthNodeFromEnd = (head, k) => {
         secondPointer = secondPointer.next;
         counter++;
     }
-    if (secondPointer === null) { 
+    if (secondPointer === null) {
         head.value = head.next.value;
         head.next = head.next.next;
         return;
