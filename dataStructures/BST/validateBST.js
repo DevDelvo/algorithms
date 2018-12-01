@@ -4,7 +4,7 @@
 //its value is leass than or equal to the values of every node to its right;
 //and both of its children nodes are either BST themselves or None(null) values.
 
-// Sample input: 
+// Sample input:
 //       11
 //     /     \
 //     6     13
@@ -110,7 +110,7 @@ class BST {
 }
 
 //FUNCTION STARTS HERE
-// O(n) time where n is number of nodes. You have to check every node | O(d) space where d is how deep the tree is. 
+// O(n) time where n is number of nodes. You have to check every node | O(d) space where d is how deep the tree is.
 function validateBST(tree, max = Infinity, min = -Infinity) {
     if (tree === null) return true;
     if (tree.value < min || tree.value >= max) return false;

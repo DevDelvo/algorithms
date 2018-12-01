@@ -54,7 +54,7 @@ class BST {
         }
         return this;
     }
-    
+
     // Average: O(log(n)) time | O(log(n)) space
     // Worst: O(n) time | O(n) space
     search(value) {
@@ -93,8 +93,9 @@ class BST {
 
     // Average: O(log(n)) time | O(log(n)) space
     // Worst: O(n) time | O(n) space
-    // First find node, then remove it 
+    // First find node, then remove it
     remove(value, parent = null) {
+        debugger;
         if (value < this.value) {
             if (this.left !== null) {
             this.left.remove(value, this);
@@ -142,10 +143,10 @@ class BST {
         let currentNode = this;
         while (currentNode !== null) {
             if (value < currentNode.value) { //if its less than
-                parentNode = currentNode; 
+                parentNode = currentNode;
                 currentNode = currentNode.left; //step down to the left of the tree because it's lower
             } else if (value > currentNode.value) { //if its greater than
-                parentNode = currentNode; 
+                parentNode = currentNode;
                 currentNode = currentNode.right; //step down to right of the tree because it's greater
             } else { //for when the value has been found
                 if (currentNode.left !== null && currentNode.right !== null) { //when the left and right nodes have been set you can remove
@@ -194,4 +195,4 @@ class BST {
 
 const testTree = new BST(10).insert(5).insert(15).insert(5).insert(3).insert(15).insert(20)
 
-console.log(testTree.search(6))
+console.log(testTree.remove(12))

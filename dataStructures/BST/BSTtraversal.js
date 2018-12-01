@@ -99,7 +99,7 @@ class BST {
 }
 
 
-// SOLUTION 
+// SOLUTIO
 // O(n) time | O(n) space for all three
 
 function inOrder(tree, array) {
