@@ -15,11 +15,11 @@ const lowestPositiveInteger = (arr) => {
         if (num > 0) hash[num] = true;
     }
     const posNums = Object.keys(hash);
-    for (let i = 1; i < posNums.length; i++) {
+    for (let i = 0; i < posNums.length; i++) {
         let cur = parseInt(posNums[i]);
-        let prev = parseInt(posNums[i - 1]);
-        if (prev !== 1) return 1; 
-        if (cur !== prev + 1) return prev + 1;
+        if (cur !== i + 1) {
+            return i + 1;
+        }
     }
     return parseInt(posNums[posNums.length - 1]) + 1;
 }
