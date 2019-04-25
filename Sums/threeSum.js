@@ -15,7 +15,7 @@
 
 const threeSum = (arr) => {
     let solutions = [];
-    var target = 0;
+    let target = 0;
     arr.sort((a, b) => {
         return a - b;
     });
