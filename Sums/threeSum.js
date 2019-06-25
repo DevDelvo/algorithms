@@ -43,8 +43,9 @@ const threeSum = (arr) => {
 }
 
 const test1 = [-1, 0, 1, 2, -1, -4];
+const test2 = [-1, 0, 1, 2, -1, -4]
 
 
 console.log(threeSum(test1)); // expects [[-1, 0, 1], [-1, -1, 2]];
-// console.log(threeSum(test2));
+console.log(threeSum(test2));
 // console.log(threeSum(test3));
