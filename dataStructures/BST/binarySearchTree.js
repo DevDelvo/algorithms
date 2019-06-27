@@ -196,3 +196,6 @@ class BST {
 const testTree = new BST(10).insert(5).insert(15).insert(5).insert(3).insert(15).insert(20)
 
 console.log(testTree.remove(12))
+
+
+module.exports = BST; 
