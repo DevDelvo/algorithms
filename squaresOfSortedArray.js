@@ -22,33 +22,33 @@
 
 const squaresOfSortedArray = (arr) => {
     if (!arr.length) return [];
-    let secondIdx = 0;
-    while (arr[secondIdx] <= 0) {
-        secondIdx++;
+    let positiveIdx = 0;
+    while (arr[positiveIdx] <= 0) {
+        positiveIdx++;
     }
-    let firstIdx = secondIdx - 1;
+    let negativeIdx = positiveIdx - 1;
     let tempIdx = 0;
     let res = [];
-    while ( firstIdx >= 0 && secondIdx < arr.length) {
-        let iSquared = Math.pow(arr[firstIdx], 2);
-        let jSquared = Math.pow(arr[secondIdx], 2);
+    while ( negativeIdx >= 0 && positiveIdx < arr.length) {
+        let negSquard = Math.pow(arr[negativeIdx], 2);
+        let posSquared = Math.pow(arr[positiveIdx], 2);
         
-        if (iSquared < jSquared) {
-            res[tempIdx] = iSquared;
-            firstIdx--;
+        if (negSquard < posSquared) {
+            res[tempIdx] = negSquard;
+            negativeIdx--;
         } else {
-            res[tempIdx] = jSquared;
-            secondIdx++;
+            res[tempIdx] = posSquared;
+            positiveIdx++;
         }
         tempIdx++;
     }
-    while (firstIdx >= 0) {
-        res[tempIdx++] = Math.pow(arr[firstIdx], 2);;
-        firstIdx--;
+    while (negativeIdx >= 0) {
+        res[tempIdx++] = Math.pow(arr[negativeIdx], 2);;
+        negativeIdx--;
     }
-    while (secondIdx < arr.length) {
-        res[tempIdx++] = Math.pow(arr[secondIdx], 2);
-        secondIdx++;
+    while (positiveIdx < arr.length) {
+        res[tempIdx++] = Math.pow(arr[positiveIdx], 2);
+        positiveIdx++;
     }
     return res
 }
