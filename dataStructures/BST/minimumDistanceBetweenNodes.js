@@ -42,10 +42,10 @@ function minDiffInBST(tree) {
         if (!tree) return res;
         if (low !== -Infinity) res = Math.min(res, tree.val - low);
         if (high !== Infinity) res = Math.min(res, high - tree.val);
-        minDiffInBSTHelper(tree.left, low, tree.val, res);
-        minDiffInBSTHelper(tree.right, tree.val, high, res);
+        minDiffInBSTHelper(tree.left, low, tree.val);
+        minDiffInBSTHelper(tree.right, tree.val, high);
     }
-    
+
     minDiffInBSTHelper(tree, -Infinity, Infinity);
     return res;
 }
