@@ -10,6 +10,7 @@
 
 const nums1 = [1,2,3,0,0,0];
 const nums2 = [2,5,6];
+// O(n1 + n2) time | O(1) space
 var mergeSortedArrays = function(nums1, m, nums2, n) {
     let i = 0;
     let j = 0;
