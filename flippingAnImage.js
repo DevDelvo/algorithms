@@ -43,14 +43,15 @@ function inPlaceFlipAndInvertImage(image) {
 
 function flipAndInvertImage(arr) {
     for (const image of arr) {
-        for (let i = 0; i < image.length; i++) {
+        for (let i = 0; i < Math.floor((image.length + 1) / 2); i++) {
             let temp = image[i] ^ 1;
             image[i] = image[image.length - 1 - i] ^ 1;
             image[image.length - 1 - i] = temp;
+            // console.log(image)
         }
     }
     return arr;
 }
 
-console.log(flipAndInvertImage(test1));
-console.log(flipAndInvertImage(test2));
+console.log(flipAndInvertImage(test1)); // [[1,0,0],[0,1,0],[1,1,1]]
+console.log(flipAndInvertImage(test2)); // [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
