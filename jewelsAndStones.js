@@ -13,7 +13,7 @@
 // S and J will consist of letters and have length at most 50.
 // The characters in J are distinct.
 
-var numJewelsInStones = function(J, S) {
+const numJewelsInStones = function(J, S) {
     let count = 0;
     // const jewels = j.split("");
     const jewelsObj = {}
@@ -26,5 +26,7 @@ var numJewelsInStones = function(J, S) {
 
 const J1 = "aA", S1 = "aAAbbbb";
 const J2 = "z", S2 = "ZZ";
-console.log(numJewelsInStones(J1, S1)); // 3
-console.log(numJewelsInStones(J2, S2)); // 0
+// console.log(numJewelsInStones(J1, S1)); // 3
+// console.log(numJewelsInStones(J2, S2)); // 0
+
+module.exports = numJewelsInStones;
