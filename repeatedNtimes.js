@@ -19,8 +19,15 @@
 // 0 <= A[i] < 10000
 // A.length is even
 
-function repeatedNTimes (arr, n) {
-
+function repeatedNTimes (arr) {
+    const memo = {};
+    for (const num of arr) {
+        if (!memo[num]) {
+            memo[num] = 1;
+        } else {
+            return num;
+        }
+    }
 }
 
 module.exports = repeatedNTimes;

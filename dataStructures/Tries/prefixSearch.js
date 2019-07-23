@@ -1,8 +1,6 @@
 const book = {
     id: 1,
-    text: `Once upon a time, there was a book with words.
-    The book had not been catalogued, but would catch the
-    eyes of onlookers nonetheless.`
+    text: `Once upon a time, there was a book with words. The book had not been catalogued, but would catch the eyes of onlookers nonetheless.`
   };
   
 
@@ -65,7 +63,7 @@ function buildTrie (text) {
         while (text[i] && text[i] !== ' ' && text[i] !== ',' && text[i] !== '.') {
             const char = text[i];
             node[char] = node[char] || {indices: []};
-            node[char].indices.push(starting);
+            node[char].indices.push(i);
             node = node[char];
             i++
         }

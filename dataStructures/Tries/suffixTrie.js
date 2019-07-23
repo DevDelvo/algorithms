@@ -54,4 +54,4 @@ class SuffixTrie {
 }
 
 const trie1 = new SuffixTrie("babc");
-console.log(trie);
+console.log(trie1);
