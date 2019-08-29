@@ -40,7 +40,7 @@ const findAllAnagramsInString = (str, p) => {
     while (end < str.length) {
         let endChr = str[end];
         if (map.has(endChr)) {
-            map.set(endChr, map.get(endChr) -1);
+            map.set(endChr, map.get(endChr) - 1);
             if (map.get(endChr) === 0) count--;
         }
         end++;
