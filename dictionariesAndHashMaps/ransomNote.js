@@ -1,18 +1,20 @@
 
 function checkMagazine(magazine, note) {
     const magHash = {};
-    for (const word of magazine) {
+    const words = magazine.split(" ");
+    for (const word of words) {
+        // console.log(word)
         if (magHash[word]) {
             magHash[word]++;
         } else {
             magHash[word] = 1;
         }
     }
-
-    for (const word of note) {
+    const noteWords = note.split(" ")
+    for (const word of noteWords) {
         if (magHash[word]) {
             magHash[word]--;
-        } else if (!magHash[word] || magHash[word] <= 0){
+        } else if (!magHash[word] || magHash[word] <= 0) {
             return false;
         }
     }
