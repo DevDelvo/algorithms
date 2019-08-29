@@ -15,7 +15,7 @@ nthFib(7) //13
 //Solution 2 MEMOIZATION / CACHING
 //TIME complexity  O(n)
 //Space complexity O(n)
-function nthFibMemo(n, memo = { 1: 0, 2: 1 }) {
+function nthFibMemo(n, memo = { 0: 0, 1: 1 }) {
   if (n in memo) {
     return memo[n]
   } else {
