@@ -70,7 +70,7 @@ const reverse = (head) => {
         next = current.next; // save the next value as next
         current.next = prev; // set the next to prev. when it initializes, the next is null.
         prev = current; // set prev to current
-        current = next; // set current to next
+        current = next; // set current to next. we had to save current.next as next because current.next is mutated when current.next = prev on the next line
     }
     head = prev;
     return head;
