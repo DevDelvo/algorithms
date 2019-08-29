@@ -44,3 +44,18 @@ function nthFibIterative(n) {
 }
 
 nthFibIterative(7)
+
+// Solution 4 bottom up
+function fibBottomUp(num) {
+  if (num === 1 || num === 2) return 1;
+  let fibs = new Array(num);
+  fibs[0] = 1;
+  fibs[1] = 1;
+  for (let i = 2; i < num; i++) {
+    fibs[i] = fibs[i - 1] + fibs[i - 2];
+  }
+  console.log('fibBottomUp: ', fibs[fibs.length - 1])
+  return fibs[fibs.length - 1];
+}
+
+fibBottomUp(7)
