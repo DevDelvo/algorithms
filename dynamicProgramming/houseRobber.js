@@ -16,16 +16,16 @@ git// You are a professional robber planning to rob houses along a street. Each 
 //              Total amount you can rob = 2 + 9 + 1 = 12.
 
 var rob = function (nums) {
-    if (!nums) return 0;
+    if (nums.length === 0 || !nums) return 0;
     let amount = new Array(nums.length); // Dynamic programming woowooo
     // start with the first two houses
     amount[0] = nums[0];
     amount[1] = Math.max(nums[0], nums[1]);
 
     for (let i = 2; i < nums.length; i++) {
-        amount[i] = Math.max(amount[i - 1], amount[i - 2] + nums[i])
+        amount[i] = Math.max(amount[i - 1], amount[i - 2] + nums[i]); // find the greatest between the 2 different paths you can take
     }
-    return amount[amount.length - 1]
+    return amount[nums.length - 1];
 };
 
 const test1 = [1, 2, 3, 1]; // 4
