@@ -25,6 +25,7 @@ const isPalindrome = (num) => {
     while (num > revertedNum) {
         // this will get us the last half of the number reversed.
         // Ex: 1221 % 10 gets us 1 which is the last digit.
+        // multiply it by 10 to move it over to the left: revertedNum = 10 + 122 % 2
         // the 2nd digit is (1221 / 10 ) = 122 => 122 % 10 = 2
         // revertedNum = 12;
         revertedNum = revertedNum * 10 + num % 10;
@@ -36,7 +37,7 @@ const isPalindrome = (num) => {
     // when the length of the num is odd, we can get rid of the middle digit with revertedNum / 10
     // Ex: when num = 12321, at the end of the loop we get num = 12, revertedNum = 123
     // so 12 === 123 will but false, but 12 === 123/10 since 123/10 is 12
-    return num === revertedNum || num === revertedNum / 10;
+    return num === revertedNum || num === Math.floor(revertedNum / 10);
 }
 
 
