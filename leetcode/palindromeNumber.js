@@ -16,6 +16,8 @@
 
 // Don't convert number to a string.
 
+
+// Time: O(log10(n)) We divide the input by 10 for each iteration | Space: O(1)
 const isPalindrome = (num) => {
     if (num < 0 || (num % 10 === 0 && num !== 0)) return false; // if the number is negative || its last digit is 0  and it isnt 0 itself then it isnt a palindrome.
 
@@ -36,6 +38,8 @@ const isPalindrome = (num) => {
     // so 12 === 123 will but false, but 12 === 123/10 since 123/10 is 12
     return num === revertedNum || num === revertedNum / 10;
 }
+
+
 
 const test1 = 121; // true
 const test2 = -121; //false
