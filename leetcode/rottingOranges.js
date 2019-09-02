@@ -84,6 +84,8 @@ function infectOthers(grid, i, j, q) {
     return infected;
 }
 
+// Time: O(N) where N is the number of cells in the grid | Space: O(N)
+
 const test1 = [[2, 1, 1], [1, 1, 0], [0, 1, 1]]; // 4
 const test2 = [[2, 1, 1], [0, 1, 1], [1, 0, 1]]; // -1
 const test3 = [[0, 2]]; // 0
