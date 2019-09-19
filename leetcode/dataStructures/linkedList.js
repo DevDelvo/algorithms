@@ -16,14 +16,24 @@ class LinkedList {
 
         let loop = head;
         
-        while (counter < pos) {
+        while (counter < pos && pos) {
             loop = loop.next;
             counter++;
         }
-        // console.log(current)
-        // console.log(loop)
-        if (pos >= 0) current.next = loop;
+
+        if (pos && pos >= 0) current.next = loop;
+
         return head;
+    }
+    
+    printList() {
+        const list = [];
+        let current = this;
+        while (current) {
+            list.push(current.val)
+            current = current.next;
+        }
+        return list;
     }
 }
 
