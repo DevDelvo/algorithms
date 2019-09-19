@@ -21,7 +21,7 @@ class LinkedList {
             counter++;
         }
 
-        if (pos && pos >= 0) current.next = loop;
+        if (pos !== null && pos >= 0) current.next = loop;
 
         return head;
     }

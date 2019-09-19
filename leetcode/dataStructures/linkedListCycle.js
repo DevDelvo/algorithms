@@ -57,3 +57,22 @@ console.log(hasCycle(test1)); // true;
 console.log(hasCycle(test2)); // true;
 console.log(hasCycle(test3)); // false;
 console.log(hasCycle(test4)); // false;
+
+const hasCycleSet = head => {
+    const set = new Set();
+    let current = head;
+    while (current) {
+        if (set.has(current)) {
+            return true;
+        } else if (!set.has(current)) {
+            set.add(current);
+        }
+        current = current.next;
+    }
+    return false;
+}
+
+console.log('table solution => ', hasCycleSet(test1)); // true;
+console.log('table solution => ', hasCycleSet(test2)); // true;
+console.log('table solution => ', hasCycleSet(test3)); // false;
+console.log('table solution => ', hasCycleSet(test4)); // false;
