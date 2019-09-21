@@ -8,7 +8,7 @@ const removeKthNodeFromEnd = (head, k) => {
     let firstPoint = dummy;
     let secondPoint = dummy;
     let counter = 0;
-    
+
     // for (let i = 0; i < k + 1; i ++) {
     //     firstPoint = firstPoint.next;
     // }
@@ -28,7 +28,7 @@ const removeKthNodeFromEnd = (head, k) => {
 
 
 
-const test = new LinkedList(5).addValues([12,43,20])
+const test = new LinkedList(5).addValues([12, 43, 20])
 removeKthNodeFromEnd(test, 2); // should remove second node from the end.
 
 // test.removeNode(12)
