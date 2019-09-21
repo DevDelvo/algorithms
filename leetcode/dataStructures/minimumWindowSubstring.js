@@ -75,11 +75,9 @@ function minWindow(strS, strT) {
         console.log('left => ', left);
         console.log('right => ', right);
         while (left <= right && formed === required) {
-            console.log('boop')
             char = strS.charAt(left);
             // save smallest window until now
             if (ans[0] === -1 || right - left + 1 < ans[0]) {
-                console.log('boop')
                 ans[0] = right - left + 1;
                 ans[1] = left;
                 ans[2] = right;
@@ -96,11 +94,161 @@ function minWindow(strS, strT) {
         }
         // Expand window once we are done contracting
         right++;
-        console.log(right)
     }
-    console.log('windowCounts => ', windowCounts.entries())
     console.log(ans)
     return ans[0] === -1 ? "" : strS.substring(ans[1], ans[2] + 1);
 }
 
-console.log(minWindow("ADOBECODEBANC", "ABC")); // "BANC"
+// Complexity Analysis
+// Time Complexity: O(|S| + |T|)O(∣S∣+∣T∣) where |S| and |T| represent the lengths of strings SS and TT.
+// In the worst case we might end up visiting every element of string SS twice, once by left pointer and once by right pointer. |T|∣T∣ represents the length of string TT.
+// Space Complexity: O(|S| + |T|)O(∣S∣+∣T∣). |S|∣S∣ when the window size is equal to the entire string SS. |T|∣T∣ when TT has all unique characters.
+
+// console.log(minWindow("ADOBECODEBANC", "ABC")); // "BANC"
+
+
+// Approach 2: Optimized Sliding Window
+// Intuition
+// A small improvement to the above approach can reduce the time complexity of the algorithm to O(2 ∗ ∣filtered_S∣ + ∣S∣ + ∣T∣),
+// where filtered_S is the string formed from S by removing all the elements not present in T.
+
+// This complexity reduction is evident when |filtered\_S| <<< |S|
+
+// This kind of scenario might happen when length of string TT is way too small than the length of string S and string S consists of numerous characters which are not present in T.
+
+// Algorithm
+// We create a list called filtered_S which has all the characters from string S along with their indices in S, but these characters should be present in T.
+
+// S = "ABCDDDDDDEEAFFBC" T = "ABC"
+// filtered_S = [(0, 'A'), (1, 'B'), (2, 'C'), (11, 'A'), (14, 'B'), (15, 'C')]
+// Here (0, 'A') means in string S character A is at index 0.
+
+// We can now follow our sliding window approach on the smaller string filtered_S.
+// function minWindowOptimized(strS, strT) {
+//     if (strS === "" || strT === "") return "";
+//     const dictT = new Map();
+//     for (let i = 0; i < strT.length; i++) {
+//         const char = strT.charAt(i);
+//         const count = dictT.get(char) || 0;
+//         dictT.set(char, count + 1);
+//     }
+
+//     const required = dictT.size;
+
+//     const filteredS = new Map();
+//     for (let i = 0; i < strS.length; i++) {
+//         const char = strS.charAt(i);
+//         console.log('char => ', char)
+//         if (dictT.has(char)) {
+//             filteredS.set(i, char);
+//         }
+//     }
+//     console.log('dictT => ', dictT.entries());
+//     console.log('filteredS => ', filteredS.entries())
+
+//     let right = left = unique = 0;
+//     const windowCounts = new Map();
+//     const ans = [-1, 0, 0];
+
+//     // Look for the characters only in the filtered list instead of entire s.
+//     // This helps to reduce our search.
+//     // Hence, we follow the sliding window approach on as small list.
+//     while (right < filteredS.size) {
+//         let char = filteredS.get(right);
+//         console.log('filteredS.get(right) => ', right, char)
+//         let count = windowCounts.get(char) || 0;
+//         windowCounts.set(char, count + 1);
+
+//         if (dictT.has(char) && windowCounts.get(char) === dictT.get(char)) {
+//             unique++;
+//         }
+//         // Try and contract the window till the point where it ceases to be 'desirable'.
+//         while (left <= right && required === unique) {
+//             console.log('left => ', left);
+//             console.log('right => ', right)
+//             char = filteredS.get(left);
+//             // Save the smallest window until now.
+//             let end = filteredS.get(right);
+//             let start = filteredS.get(left);
+//             if (ans[0] === -1 || right - left + 1 < ans[0]) {
+//                 ans[0] = right - left + 1;
+//                 ans[1] = left;
+//                 ans[2] = right;
+//             }
+//             windowCounts.set(char, windowCounts.get(char) - 1);
+//             if (dictT.has(char) && windowCounts.get(char) < dictT.get(char)) {
+//                 unique--;
+//             }
+//             left++;
+//         }
+//         right++;
+//     }
+//     console.log('windowCounts => ', windowCounts.entries())
+//     console.log('ans => ', ans)
+//     return ans[0] === -1 ? '' : strS.substring(ans[1], ans[2] + 1);
+// }
+function minWindowOptimized(strS, strT) {
+    if (strS === "" || strT === "") return "";
+    const dictT = new Map();
+    for (let i = 0; i < strT.length; i++) {
+        const char = strT.charAt(i);
+        const count = dictT.get(char) || 0;
+        dictT.set(char, count + 1);
+    }
+
+    const required = dictT.size;
+
+    const filteredS = [];
+    for (let i = 0; i < strS.length; i++) {
+        const char = strS.charAt(i);
+        console.log('char => ', char)
+        if (dictT.has(char)) {
+            filteredS[i] = char;
+        }
+    }
+    console.log('dictT => ', dictT.entries());
+    console.log('filteredS => ', filteredS);
+
+    let right = left = unique = 0;
+    const windowCounts = new Map();
+    const ans = [-1, 0, 0];
+
+    // Look for the characters only in the filtered list instead of entire s.
+    // This helps to reduce our search.
+    // Hence, we follow the sliding window approach on as small list.
+    while (right < filteredS.length) {
+        let char = filteredS[right];
+        console.log('filteredS.get(right) => ', right, char)
+        let count = windowCounts.get(char) || 0;
+        windowCounts.set(char, count + 1);
+
+        if (dictT.has(char) && windowCounts.get(char) === dictT.get(char)) {
+            unique++;
+        }
+        // Try and contract the window till the point where it ceases to be 'desirable'.
+        while (left <= right && required === unique) {
+            console.log('left => ', left);
+            console.log('right => ', right)
+            char = filteredS[left];
+            // Save the smallest window until now.
+            // let end = filteredS.get(right);
+            // let start = filteredS.get(left);
+            if (ans[0] === -1 || right - left + 1 < ans[0]) {
+                ans[0] = right - left + 1;
+                ans[1] = left;
+                ans[2] = right;
+            }
+            windowCounts.set(char, windowCounts.get(char) - 1);
+            if (dictT.has(char) && windowCounts.get(char) < dictT.get(char)) {
+                unique--;
+            }
+            left++;
+        }
+        right++;
+    }
+    console.log('windowCounts => ', windowCounts.entries())
+    console.log('ans => ', ans)
+    return ans[0] === -1 ? '' : strS.substring(ans[1], ans[2] + 1);
+}
+
+console.log('minWindow Optimized => ', minWindowOptimized("ADOBECODEBANC", "ABC")) // "BANC"
