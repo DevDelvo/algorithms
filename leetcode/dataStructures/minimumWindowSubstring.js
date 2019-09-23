@@ -231,8 +231,6 @@ function minWindowOptimized(strS, strT) {
             console.log('right => ', right)
             char = filteredS[left];
             // Save the smallest window until now.
-            // let end = filteredS.get(right);
-            // let start = filteredS.get(left);
             if (ans[0] === -1 || right - left + 1 < ans[0]) {
                 ans[0] = right - left + 1;
                 ans[1] = left;
