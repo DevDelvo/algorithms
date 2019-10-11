@@ -11,7 +11,7 @@ class MinHeap {
     buildHeap(arr) {
         const firstParentIdx = Math.floor((arr.length - 2) / 2);
         for (let currentIdx = firstParentIdx; currentIdx >= 0; currentIdx--) {
-            this.siftDown(currentIdx, arr.length -1, arr);
+            this.siftDown(currentIdx, arr.length - 1, arr);
         }
         return arr;
     }
@@ -39,7 +39,7 @@ class MinHeap {
 
     // O(log(n)) time | O(1) space
     siftUp(currentIdx, heap) {
-        let parentIdx = Math.floor((currentIdx -1) / 2);
+        let parentIdx = Math.floor((currentIdx - 1) / 2);
         while (currentIdx > 0 && heap[currentIdx] < heap[parentIdx]) {
             this.swap(currentIdx, parentIdx, heap);
             currentIdx = parentIdx;
@@ -57,7 +57,7 @@ class MinHeap {
         this.swap(0, this.heap.length - 1, this.heap); //swaps beginning and end
         const valueToRemove = this.heap.pop(); //removes the element at the end of the heap which was swapped
         this.siftDown(0, this.heap.length - 1, this.heap); //reassigns idices
-        return valueToRemove; 
+        return valueToRemove;
     }
 
     insert(value) {
@@ -66,13 +66,13 @@ class MinHeap {
     }
 
     swap(i, j, heap) {
-            [heap[i], heap[j]] = [heap[j], heap[i]];
-        }
+        [heap[i], heap[j]] = [heap[j], heap[i]];
+    }
 }
 
 
 const test1 = new MinHeap([2, 3, 1]);
-const test2 = new MinHeap([1, 2, 3, 4, 5, 6 ,7 ,8 ,9]);
+const test2 = new MinHeap([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 const test3 = new MinHeap([48, 12, 24, 7, 8, -5, 24, 391, 24, 56, 2, 6, 8, 41]);
 test3.insert(76);
 test3.remove();
