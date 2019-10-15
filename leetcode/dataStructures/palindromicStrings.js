@@ -51,8 +51,8 @@ function substringCount(str) {
 // Time Complexity: O(N^2) where N is the length of S. Each expansion might do O(N) work.
 // Space Complexity: O(1).
 
-console.log(substringCount('abc')); // 3
-console.log(substringCount('aaa')) // 6
+console.log('Expand around center => ', substringCount('abc')); // 3
+console.log('Expand around center => ', substringCount('aaa')) // 6
 
 
 function substringCountDynamic(str) {
@@ -82,9 +82,41 @@ function substringCountDynamic(str) {
             }
         }
     }
-    console.log(DP)
     return count;
 }
 
-console.log(substringCountDynamic('abc')); // 3
-console.log(substringCountDynamic('aaa')) // 6
+console.log('Dynamic programming => ', substringCountDynamic('abc')); // 3
+console.log('Dynamic programming => ', substringCountDynamic('aaa')) // 6
+
+function subStringCountManachers(str) {
+    if (!str.length) return 0;
+    let strArr = '#' + str.split('').join("#") + '#';
+    // manacher's algorithm
+    let C = 0;
+    let R = 0;
+    let count = 0;
+    let P = new Array(strArr.length);
+
+    for (let i = 1; i <= strArr.length; i++) {
+        let mirror = C * 2 - i;
+        P[i] = (i < R) ? Math.min(R - i, P[mirror]) : 0;
+        while (i + 1 + P[i] < strArr.length && i - 1 - P[i] >= 0 && strArr.charAt(i + 1 + P[i]) === strArr.charAt(i - 1 - P[i])) {
+            P[i]++;
+        }
+        if (i + P[i] > R) {
+            C = i;
+            R = i + P[i];
+        }
+        // console.log(P[i] % 2)
+        if (P[i] % 2 !== 0) {
+            count += Math.floor(P[i] / 2) + 1;
+        } else {
+            count += Math.floor(P[i] / 2);
+        }
+    }
+
+    return count;
+}
+
+console.log('Manacher\'s algorithm =>', subStringCountManachers('abc')); // 3
+console.log('Manacher\'s algorithm =>', subStringCountManachers('aaa')) // 6
