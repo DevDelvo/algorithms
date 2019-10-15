@@ -118,5 +118,7 @@ function subStringCountManachers(str) {
     return count;
 }
 
+// O(n) time | O(n) space
+
 console.log('Manacher\'s algorithm =>', subStringCountManachers('abc')); // 3
 console.log('Manacher\'s algorithm =>', subStringCountManachers('aaa')) // 6
