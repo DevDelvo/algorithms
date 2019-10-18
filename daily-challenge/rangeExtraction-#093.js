@@ -25,16 +25,19 @@ function rangeExtraction(arr) {
             console.log('push new range')
             range.push(arr[pointer2]);
             pointer2++;
-        } else if (arr[pointer2 + 1] !== arr[pointer2] + 1 && range.length) {// when the next number after pointer2 is NOT +1, add them to the res and reset array
+        } else if (arr[pointer2 + 1] !== arr[pointer2] + 1) {// when the next number after pointer2 is NOT +1, add them to the res and reset array
             range.push(arr[pointer2]);
-            res += range[0].toString() + '-' + range[range.length - 1].toString() + ','; // add to res
+            console.log('final range => ', range)
+            range.length >= 3 ? res += range[0].toString() + '-' + range[range.length - 1].toString() + ',' : res += range[0] + ',' + range[1] + ',';
+            // res += range[0].toString() + '-' + range[range.length - 1].toString() + ','; // add to res
             console.log('res => ', res)
             range = []; // reset array
             pointer1 = pointer2; // jumpstart pointer 1 to pointer 2
+            pointer1++; //skip pointer1 to avoid duplicate
             pointer2++;
         } 
     }
-    return res;
+    return res[res.length - 1] === ',' ? res.slice(0, res.length -1) : res;
 }
 
 console.log(rangeExtraction([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20])); //-6,-3-1,3-5,7-11,14,15,17-20
