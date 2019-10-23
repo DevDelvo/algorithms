@@ -33,20 +33,22 @@ nthFibMemo(7) //13
 function nthFibIterative(n) {
   let fibNums = [0, 1]
   let counter = 2;
-  while (counter <= n) {
+  while (counter < n) {
     const next = fibNums[0] + fibNums[1];
     fibNums[0] = fibNums[1];
     fibNums[1] = next;
     counter++;
   }
   console.log("nthFibIterative", n > 1 ? fibNums[1] : fibNums[0])
-  return n > 1 ? fibNums[1] : fibNums[0]; //if n is greater than 0 return last number in fibNums else return the first number which is 0
+  return n > 0 ? fibNums[1] : fibNums[0]; //if n is greater than 0 return last number in fibNums else return the first number which is 0
 }
 
-nthFibIterative(7)
+nthFibIterative(7) // 8
+nthFibIterative(5) // 3
 
 // Solution 4 bottom up
 function fibBottomUp(num) {
+  if (num === 0) return 0;
   if (num === 1 || num === 2) return 1;
   let fibs = new Array(num);
   fibs[0] = 1;
