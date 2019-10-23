@@ -48,14 +48,14 @@ console.log('recursive -> ',invertBST(tree1));
 // O(n) time | O(n) space
 function invertBSTIterative(head) {
     if (!head) return null;
-    const queue = [head];
-    while (queue.length) {
-        const current = queue.pop();
+    const stack = [head];
+    while (stack.length) {
+        const current = stack.pop();
         const temp = current.left;
         current.left = current.right;
         current.right = temp;
-        if (current.left !== null) queue.push(current.left);
-        if (current.right !== null) queue.push(current.right);
+        if (current.left !== null) stack.push(current.left);
+        if (current.right !== null) stack.push(current.right);
     }
     return head;
 }
