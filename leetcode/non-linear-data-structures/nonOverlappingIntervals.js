@@ -24,6 +24,14 @@
 // You may assume the interval's end point is always bigger than its start point.
 // Intervals like [1,2] and [2,3] have borders "touching" but they don't overlap each other.
 
-function eraseOverlapIntervals() {
-    
+function eraseOverlapIntervals(arr) {
+
 }
+
+const arr1 = [ [1,2], [2,3], [3,4], [1,3] ]
+const arr2 = [ [1,2], [1,2], [1,2] ]
+const arr3 = [ [1,2], [2,3] ]
+
+console.log(eraseOverlapIntervals(arr1))
+console.log(eraseOverlapIntervals(arr2))
+console.log(eraseOverlapIntervals(arr3))
