@@ -31,22 +31,39 @@ class TreeNode {
 }
 
 function serialize(root) {
-    let serialized = [];
-    function encode(node) {
-        if (node) {
-            serialized.push(node.val);
-            encode(node.left);
-            // serialized.push(node.val);
-            encode(node.right);
-        } else if (node === null) {
-            serialized.push(null);
+    if (root === null) return null;
+    const res = [];
+    function traverse(root) {
+        let queue = [root];
+        while (queue.length) {
+            let next = [];
+            for (const node of queue) {
+                
+                node !== null ? res.push(node.val) : res.push(null);
+                if (node === null) {
+                    next.shift();
+                    continue
+                };
+                if (node.left) {
+                    next.push(node.left);
+                } else {
+                    next.push(null)
+                }
+                if (node.right) {
+                    next.push(node.right)
+                } else {
+                    next.push(null)
+                }
+            }
+            console.log('next queue', next)
+            queue = next;
         }
-    }
-    encode(root);
-    return serialized;
+    } 
+    traverse(root)
+    return res;
 }
 
-function deserialize(root) {
+function deserialize(nodes) {
 
 }
 
@@ -55,7 +72,8 @@ root.left = new TreeNode(2)
 root.right = new TreeNode(3);
 root.right.right = new TreeNode(5);
 root.right.left = new TreeNode(4);
+root.right.right.right = new TreeNode(7)
 
-console.log('root => ', root)
+// console.log('root => ', root)
 console.log('serialize => ', serialize(root)); // [1,2,3,null,null,4,5]
 console.log('deserialize => ', deserialize(root));
