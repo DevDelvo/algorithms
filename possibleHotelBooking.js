@@ -57,5 +57,33 @@ function possibleHotelBookings(arrive, depart, k) {
 }
 // Time O(nlogn) average, O(n^2) worst | Space O(n)
 
+console.log('sorted map solution => ', possibleHotelBookings([1,3,5], [2,6,10], 1)); // false
 
-console.log(possibleHotelBookings([1,3,5], [2,6,10], 1)); // false
+// sorted with pointers
+function possibleHotelBookings2(arrive, depart, k) {
+    arrive.sort((a, b) => a - b);
+    depart.sort((a, b) => a - b);
+
+    let count = 0;
+    let arrivePointer = 0;
+    let departPointer = 0;
+    let n = arrive.length;
+    // console.log(arrive, depart)
+
+    while (arrivePointer < n && departPointer < n) {
+        // check the min
+        if (arrive[arrivePointer] < depart[departPointer]) {
+            arrivePointer++;
+            count++;
+
+            if (count > k) return false;
+        } else {
+            departPointer++;
+            count--;
+        }
+    }
+    return true;
+}
+// O(nlogn) time | O(1) space
+
+console.log('pointers => ', possibleHotelBookings2([1,3,5], [2,6,10], 1)); // false
