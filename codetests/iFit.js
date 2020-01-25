@@ -1,11 +1,11 @@
 function tripleThreat(a) {
-  for (const i = 0; i < a.length - 2; i++) {
+  for (let i = 0; i < a.length - 2; i++) {
     if ((a[i] + 1 === a[i + 1]) && (a[i + 1] + 1 === a[i + 2])) return 1;
   }
   return 0;
 }
 
-console.log(tripleThreat([0, 4, 5, 6, 10, 12])) // 1
+// console.log(tripleThreat([0, 4, 5, 6, 10, 12])) // 1
 
 
 
@@ -31,4 +31,74 @@ function createPackage(small, big, goal) {
   return goal;
 }
 
-console.log(createPackage(9, 2, 9)); // 4
+// console.log(createPackage(9, 2, 9)); // 4
+
+// check if leaves are equal
+
+const tree = {
+  a: 1,
+  b: 1,
+  c: {
+    c1: 1,
+    c2: 2,
+    c3: 1,
+    c4: {
+      c41: 1,
+      c42: 1
+    }
+  },
+  d: 1
+}
+
+const tree2 = {
+  a: 1,
+  b: 1,
+  c: {
+    c1: 1,
+    c2: 1,
+    c3: 1,
+    c4: {
+      c41: 1,
+      c42: 1
+    }
+  },
+  d: 1
+}
+
+const tree3 = {
+  a: 1,
+  b: 1,
+  c: {
+    c1: 1,
+    c2: 2,
+    c3: 1,
+    c4: {
+      c41: 1,
+      c42: 2
+    }
+  },
+  d: 1
+}
+
+function areLeavesEqual(tree) {
+  let initialValue = null;
+
+  for (const key in tree) {
+    const branch = tree[key];
+    if (typeof branch === 'number') {
+      if (initialValue === null) initialValue = branch;
+      if (initialValue) {
+        if (branch !== initialValue) return false;
+      }
+    } else if (typeof branch === 'object') {
+      return areLeavesEqual(branch);
+    }
+  }
+
+  return true;
+}
+
+
+console.log(areLeavesEqual(tree)); // false
+console.log(areLeavesEqual(tree2)); // true
+console.log(areLeavesEqual(tree3)); // false
