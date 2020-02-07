@@ -7,7 +7,7 @@
 // Example 2:
 // Input: [-7,-3,2,3,11]
 // Output: [4,9,9,49,121]
- 
+
 // Note:
 // 1 <= A.length <= 10000
 // -10000 <= A[i] <= 10000
@@ -29,10 +29,10 @@ const squaresOfSortedArray = (arr) => {
     let negativeIdx = positiveIdx - 1;
     let tempIdx = 0;
     let res = [];
-    while ( negativeIdx >= 0 && positiveIdx < arr.length) {
+    while (negativeIdx >= 0 && positiveIdx < arr.length) {
         let negSquard = Math.pow(arr[negativeIdx], 2);
         let posSquared = Math.pow(arr[positiveIdx], 2);
-        
+
         if (negSquard < posSquared) {
             res[tempIdx] = negSquard;
             negativeIdx--;
@@ -53,5 +53,24 @@ const squaresOfSortedArray = (arr) => {
     return res
 }
 
-console.log(squaresOfSortedArray([-4,-1,0,3,10])) // [0,1,9,16,100]
-console.log(squaresOfSortedArray([-7,-3,2,3,11])) // [4,9,9,49,121]
+const squaresOfSortedArray2 = (arr) => {
+    if (!arr.length) return [];
+    const sortedSquares = Array(arr.length).fill(0);
+    let left = 0;
+    let right = arr.length - 1;
+    for (let i = sortedSquares.length - 1; i >= 0; i--) {
+        if (Math.abs(arr[left] > arr[right])) {
+            sortedSquares[i] = Math.pow(arr[left], 2);
+            left++;
+        } else {
+            sortedSquares[i] = Math.pow(arr[right], 2);
+            right--;
+        }
+    }
+    return sortedSquares;
+}
+
+// console.log(squaresOfSortedArray([-4,-1,0,3,10])) // [0,1,9,16,100]
+// console.log(squaresOfSortedArray([-7,-3,2,3,11])) // [4,9,9,49,121]
+console.log(squaresOfSortedArray2([-4, -1, 0, 3, 10])) // [0,1,9,16,100]
+console.log(squaresOfSortedArray2([-7, -3, 2, 3, 11])) // [4,9,9,49,121]

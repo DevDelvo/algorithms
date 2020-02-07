@@ -7,44 +7,44 @@
 // Input: [3, 2, 1]   1
 // Input: [1, 4, 2, 6, 9] 4
 
-function thirdMax (arr, n) {
+function thirdMax(arr, n) {
   // let maxNum = -Infinity;
   // let secondMaxNum = -Infinity;
   // let thirdMaxNum = -Infinity;
   // // let arr = new Array(6).fill(-Infinity);
-  
+
   // for (const num of arr) {
   //   if (num > maxNum) {
   //     maxNum = num;
   //   } else if (num < maxNum && num > secondMaxNum) {
   //     secondMaxNum = num;
   //   } else if (num < secondMaxNum && num > thirdMaxNum) {
-  //     thirdMaxNum = 
+  //     thirdMaxNum =
   //   }
   // }
   arr = arr.sort((a, b) => a - b);
   const arrSet = new Set(arr);
-  
-  if (arr.length > 3) arr[arr.length - 1]
+
+  if (arr.length < 3) arr[arr.length - 1]
   return arr[arr.length - n];
-  
-  
+}
+
  public int findKthLargest(int[] nums, int k) {
 
-    final PriorityQueue<Integer> pq = new PriorityQueue<>();
-    for(int val : nums) {
-        pq.offer(val);
+  final PriorityQueue < Integer > pq = new PriorityQueue<>();
+  for (int val : nums) {
+    pq.offer(val);
 
-        if(pq.size() > k) {
-            pq.poll();
-        }
+    if (pq.size() > k) {
+      pq.poll();
     }
-    return pq.peek();
+  }
+  return pq.peek();
 }
- [3, 1, 5, 9 , 6, 7] k = 3  
- 
-  
-  [9, 6, 7]
+[3, 1, 5, 9, 6, 7] k = 3
+
+
+[9, 6, 7]
 }
 
 public int findKthLargest(int[] nums, int k) {
